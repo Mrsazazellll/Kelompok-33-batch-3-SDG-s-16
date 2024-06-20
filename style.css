@@ -161,11 +161,11 @@ footer nav ul li a:hover {
     }
 
     nav ul li a {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     footer nav ul li a {
-        font-size: 10px; /* Smaller font size for better fit */
+        font-size: 12px; /* Smaller font size for better fit */
     }
 }
 
@@ -179,10 +179,10 @@ footer nav ul li a:hover {
     }
 
     nav ul li a {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     footer nav ul li a {
-        font-size: 8px; /* Even smaller to ensure no wrapping */
+        font-size: 10px; /* Even smaller to ensure no wrapping */
     }
 }
