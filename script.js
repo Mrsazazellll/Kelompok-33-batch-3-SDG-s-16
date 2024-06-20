@@ -1,37 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
     var nav = document.querySelector('nav');
-    var header = document.querySelector('header');
+    var logo = document.querySelector('.logo');
     var lastScrollTop = 0;
 
     window.addEventListener("scroll", function() {
         var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Apply fixed class based on scroll position
-        if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > 100) { 
             if (!nav.classList.contains('fixed')) {
                 nav.classList.add('fixed');
-                nav.style.opacity = '0'; // Initially hide when fixed
-                setTimeout(function() {
-                    nav.style.opacity = '1'; // Fade in smoothly
-                }, 10); // Delay just a bit for CSS transition to kick in
+                logo.style.opacity = '0'; // Memperhalus transisi logo
+                logo.style.transition = 'opacity 0.5s ease-in-out'; // Penyesuaian transisi logo
             }
         } else {
-            nav.classList.remove('fixed');
-            nav.style.opacity = '1'; // Ensure full opacity when not fixed
+            if (currentScroll < lastScrollTop && currentScroll > 50) {
+                if (!nav.classList.contains('fixed')) {
+                    nav.classList.add('fixed');
+                    logo.style.opacity = '0'; // Pertahankan logo hilang dengan transisi yang halus
+                    logo.style.transition = 'opacity 0.5s ease-in-out';
+                }
+            } else if (currentScroll <= 50) {
+                nav.classList.remove('fixed');
+                logo.style.opacity = '1'; // Smoothly fade in the logo
+                logo.style.transition = 'opacity 0.5s ease-in-out';
+            }
         }
 
-        // Logic to show/hide nav on scroll direction change
-        if (currentScroll > lastScrollTop && currentScroll > nav.offsetHeight) {
-            // Scrolling down
-            if (nav.style.opacity !== '0') {
-                nav.style.opacity = '0'; // Smooth fade out
-            }
-        } else if (currentScroll < lastScrollTop && currentScroll > nav.offsetHeight) {
-            // Scrolling up
-            if (nav.style.opacity !== '1') {
-                nav.style.opacity = '1'; // Smooth fade in
-            }
-        }
-        lastScrollTop = currentScroll;
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
 });
