@@ -1,6 +1,7 @@
 /* Basic HTML and Body Styles */
 html {
-    scroll-behavior: smooth; /* Enables smooth scrolling for the entire document */
+    scroll-behavior: smooth;
+    scroll-padding-top: 35px;
 }
 
 body {
@@ -8,19 +9,17 @@ body {
     color: #333;
     line-height: 1.6;
     background-color: #f4f4f4;
-    padding: 0;
-    margin: 0;
-    text-align: justify; /* Justify text for all devices */
-    max-width: 1200px; /* Sets max width for the content */
-    margin: auto; /* Centers the content horizontally */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds shadow to make it look like a container */
+    margin: 0 auto;
+    text-align: justify;
+    max-width: 1200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 /* Header Styles */
 header {
-    background-color: #003366; /* Dark blue for SDG 16 theme */
+    background-color: #003366;
     color: white;
-    padding: 20px;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,46 +28,50 @@ header {
 
 header img.logo {
     width: 120px;
-    margin-bottom: 10px;
-    transition: opacity 0.3s; /* Smooth transition for opacity */
+    margin: 0 20px;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /* Navigation Styles */
 nav {
     width: 100%;
-    position: relative; /* Start as relative */
-    background-color: #003366; /* Ensure it matches header */
-    color: white;
-    z-index: 1000; /* Keep on top */
-    transition: top 0.3s ease, opacity 0.3s ease; /* Smooth transitions for moving and fading */
-    will-change: top, opacity; /* Optimize the properties that will change */
+    background-color: #003366;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
 }
 
 nav.fixed {
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 0;
-    width: 100%; /* Ensure it spans the entire width */
+    left: 0;
+    width: 100%;
+    background-color: #003366;
+    transition: background-color 0.5s ease-in-out, top 0.5s ease-in-out;
+    z-index: 1000;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
-    margin: 0;
-    flex-wrap: nowrap; /* Prevent wrapping at any size */
+    flex-wrap: nowrap;
+    overflow-x: hidden;
 }
 
 nav ul li {
-    padding: 10px;
-    display: inline;
-    white-space: nowrap; /* Prevent text wrapping */
+    padding: 10px 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    display: block;
 }
 
 nav ul li a:hover {
@@ -76,26 +79,36 @@ nav ul li a:hover {
 }
 
 /* Main Content Styles */
+section {
+    border: 1px solid #ccc; /* Menonjolkan setiap section */
+    padding: 20px;
+    margin-bottom: 20px; /* Spacing antar section */
+    background-color: #ffffff; /* Kontras dengan body */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Efek depth */
+    border-radius: 8px; /* Membuat ujung container lebih tumpul */
+}
+
 main {
     padding: 20px;
     background-color: white;
-    margin-top: 30px; /* Space for nav */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1 {
-    text-align: center; /* Menengahkan teks */
-    margin-top: 20px; /* Memberikan sedikit ruang di atas */
-    margin-bottom: 20px; /* Memberikan sedikit ruang di bawah */
+    margin-top: 70px; /* Increased to prevent nav from covering content */
 }
 
+main h1 {
+    text-align: center;
+}
+
+main h2 {
+    color: #003366;
+}
 
 /* Footer Styles */
 footer {
-    background-color: #222; /* Dark grey to match the theme */
+    background-color: #222;
     color: white;
     text-align: center;
     padding: 20px;
-    font-size: 14px; /* Smaller font size */
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,36 +116,73 @@ footer {
 }
 
 footer nav {
-    background-color: #222; /* Same as the footer for a uniform look */
-    width: 100%; /* Full width */
-    margin-bottom: 10px;
+    background-color: #222;
 }
 
-footer p {
-    margin-top: 10px;
+footer nav ul {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: nowrap; /* Prevent wrapping of items */
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Remove list styling */
+}
+
+footer nav ul li {
+    padding: 10px 10px; /* Consistent padding */
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px; /* Adjust font size as needed */
+    display: block; /* Display as block */
+}
+
+footer nav ul li a:hover {
+    color: #cccccc; /* Hover effect color */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    header img.logo {
-        width: 80px; /* Smaller logo for smaller screens */
-    }
-
-    nav ul li a {
-        font-size: 12px; /* Smaller font size for tablets */
+    html {
+        scroll-padding-top: 35px; /* Tingkatkan jarak saat responsif untuk mengkompensasi header yang mungkin lebih kecil */
     }
 
     nav ul {
-        overflow-x: auto; /* Allows horizontal scrolling if necessary */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap; /* Pastikan tidak ada wrapping */
+    }
+    
+    header img.logo {
+        width: 70px;
+    }
+
+    nav ul li a {
+        font-size: 10.5px;
+    }
+
+    footer nav ul li a {
+        font-size: 10.5px; /* Smaller font size for better fit */
     }
 }
 
 @media (max-width: 480px) {
+    html {
+        scroll-padding-top: 35px; /* Pastikan jarak tetap 50px untuk semua ukuran layar di bawah 480px */
+    }
+
     header img.logo {
-        margin-bottom: 5px;
+        width: 70px;
     }
 
     nav ul li a {
-        font-size: 10px; /* Smaller font size for mobile */
+        font-size: 10.5px;
+    }
+
+    footer nav ul li a {
+        font-size: 8px; /* Even smaller to ensure no wrapping */
     }
 }
